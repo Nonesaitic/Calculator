@@ -43,42 +43,29 @@ numbers.forEach(number => {
 // Chọn phép tính
 operators.forEach(button => {
   button.addEventListener('click', () => {
+
+    // Nếu đã có phép tính và đã nhập số thứ hai
+    if (firstNumber !== '' && secondNumber !== '') {
+
+      const a = Number(firstNumber)
+      const b = Number(secondNumber)
+
+      let result
+
+      if (operator === '+') result = a + b
+      if (operator === '-') result = a - b
+      if (operator === '×') result = a * b
+      if (operator === '/') result = a / b
+
+      firstNumber = String(result)
+      secondNumber = ''
+    }
+
     operator = button.textContent
 
-    display.textContent = `${firstNumber} ${operator}`
+    display.textContent =
+      `${firstNumber} ${operator}`
   })
-})
-// Bấm =
-equal.addEventListener('click', () => {
-
-  const a = Number(firstNumber)
-  const b = Number(secondNumber)
-
-  let result
-
-  if (operator === '+') {
-    result = a + b
-  }
-
-  if (operator === '-') {
-    result = a - b
-  }
-
-  if (operator === '×') {
-    result = a * b
-  }
-
-  if (operator === '÷') {
-    result = a / b
-  }
-
-  display.textContent = result
-
-  firstNumber = String(result)
-  secondNumber = ''
-  operator = ''
-
-  justCalculated = true
 })
 
 // C
